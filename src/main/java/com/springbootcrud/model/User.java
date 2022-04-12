@@ -8,27 +8,25 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    @Column(nullable = false)
+    private Long id;
 
-    //Почта должна быть уникальной
-    @Column(nullable = false, unique = true)
-    private String email;
-
-    @Column(length = 15, nullable = false)
-    private String password;
-
-    @Column(length = 45,nullable = false, name = "name")
+    @Column(name = "name")
     private String name;
 
-    @Column(length = 45,nullable = false, name = "lastname")
-    private String lastname;
+    @Column(name = "lastName")
+    private String lastName;
 
-    public Integer getId() {
-        return id;
+    @Column(name = "email", unique = true)
+    private String email;
+
+    public User() {
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public User(String name, String lastName, String email) {
+        this.name = name;
+        this.lastName = lastName;
+        this.email = email;
     }
 
     public String getEmail() {
@@ -39,12 +37,12 @@ public class User {
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
+    public Long getId() {
+        return id;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -55,11 +53,21 @@ public class User {
         this.name = name;
     }
 
-    public String getLastname() {
-        return lastname;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                '}';
     }
 }

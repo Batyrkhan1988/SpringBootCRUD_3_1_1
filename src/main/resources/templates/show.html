@@ -17,7 +17,7 @@
         <tr>
             <td th:text="${user.getId()}">Id</td>
             <td th:text="${user.getName()}">Имя</td>
-            <td th:text="${user.getLastname()}">Фамилия</td>
+            <td th:text="${user.getLastName()}">Фамилия</td>
             <td th:text="${user.getEmail()}">Почтовый ящик</td>
             <td>
                 <form th:action="@{/edit/{id}(id=${user.id})}" th:object="${user}">
